@@ -4,12 +4,12 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
-    private int health;
-    public int Health
+     [SerializeField] private int health;
+     public int Health
     {
         get
         {
-            return Health;
+            return health;
         }
         set
         {
@@ -23,11 +23,16 @@ public abstract class Character : MonoBehaviour
 
     public bool IsDead()
     {
-        return Health <= 0;
+        return health <= 0;
     }
 
     public void TakeDamage(int damage)
     {
-        Health-=damage;
+        health -= damage;
+    }
+
+    public void Init(int newHealth)
+    {
+        health = newHealth;
     }
 }
