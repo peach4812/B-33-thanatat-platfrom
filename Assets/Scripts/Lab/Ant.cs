@@ -13,8 +13,6 @@ public class Ant : Enemy
     {
         Init(10);
         Debug.Log(" Ant Health " + Health);
-
-        Behavior();
     }
 
     private void FixedUpdate()

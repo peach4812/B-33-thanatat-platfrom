@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
-     [SerializeField] private int health;
-     public int Health
+    [SerializeField] private int health;
+    public int Health
     {
         get
         {
@@ -15,24 +15,26 @@ public abstract class Character : MonoBehaviour
         {
             health = value;
         }
-
     }
+
+    [SerializeField] Hpbar hpbar;
 
     public Animator anim;
     public Rigidbody2D rb;
-
     public bool IsDead()
     {
-        return health <= 0;
+        return Health <= 0;
     }
-
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        Health -= damage;
+        hpbar.UpdateHealthBar(Health);
+        IsDead();
     }
-
     public void Init(int newHealth)
     {
-        health = newHealth;
+        Health = newHealth;
+        hpbar.SetMaxHP(newHealth);
+        hpbar.UpdateHealthBar(Health);
     }
 }
